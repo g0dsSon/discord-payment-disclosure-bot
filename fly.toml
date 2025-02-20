@@ -1,0 +1,27 @@
+app = "disforcer"
+primary_region = "den"
+
+kill_signal = "SIGINT"
+kill_timeout = 5
+
+[build]
+  dockerfile = "Dockerfile"
+
+[deploy]
+  strategy = "immediate"
+
+[env]
+  BOT_CONFIG_PATH = "/bot/src/config/config.toml"
+
+[[services]]
+internal_port = 5000
+protocol = "tcp"
+
+[[services.ports]]
+force_https = true
+handlers = ["http"]
+port = 80
+
+[[services.ports]]
+handlers = ["tls", "http"]
+port = 4434

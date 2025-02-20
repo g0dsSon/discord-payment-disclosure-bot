@@ -1,0 +1,26 @@
+[bot]
+token = "YOUR_DISCORD_TOKEN"
+prefix = "!"
+log_file = "bot.log"
+
+[bot.monitoring]
+channels_to_monitor = [
+    "selling-artisans",
+    "selling-keyboards"
+]
+required_terms = [
+    "gns",
+    "g&s",
+    "goods and services",
+    "goods & services"
+]
+required_disclosures = [
+    """This seller is not accepting secure forms of payment, and MechMarket staff cautions that the buyer is transacting with the seller at their own risk, with limited potential recourse in case of dispute"""
+]
+
+[bot.server]
+host = "0.0.0.0"
+port = 5000
+workers = 1
+log_level = "info"
+reload = false

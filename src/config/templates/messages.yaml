@@ -1,0 +1,10 @@
+dm_notification: |
+  Hello {{ user_name }},
+
+  Your message was removed because it does not include either secure payment terms ({{ required_terms }}) or the required disclaimer. When not using secure payment methods, you must include:
+  
+  ```
+  {{ required_disclosure }}
+  ```
+
+  Include the required disclosure or specify the secure payment method in your message and try again.

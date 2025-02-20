@@ -1,0 +1,77 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "disforcer"
+version = "1.0.0"
+description = "A Discord bot to enforce required terms and disclosure rules in specified channels."
+authors = [
+    {name = "g0dSsOn"},
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+dependencies = [
+    "discord.py>=2.0.0",
+    "tomli==2.0.1",
+    "pyyaml==6.0.1",
+    "jinja2==3.1.2",
+    "fastapi>=0.103.2",
+    "uvicorn[standard]>=0.23.2",
+    "python-dotenv>=1.0.0",
+    "httptools>=0.6.0",
+    "uvloop>=0.18.0",
+    "watchfiles>=0.21.0",
+    "websockets>=11.0.3"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.3",
+    "pytest-asyncio>=0.21.1",
+    "pytest-cov>=4.1.0",
+    "black>=23.11.0",
+    "isort>=5.12.0",
+    "flake8>=6.1.0",
+    "requests>=2.31.0",
+    "tomli==2.0.1"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["bot*", "config*"]
+
+[tool.setuptools.package-data]
+config = ["templates/*.yaml"]
+
+[tool.black]
+line-length = 88
+target-version = ["py38"]
+include = "\\.pyi?$"
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203"]
+exclude = [".git", "__pycache__", "build", "dist"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "conftest.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
